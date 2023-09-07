@@ -3,6 +3,10 @@
     font-size: 1.4rem !important;
 }
 
+.dropdown-filter .css-14lo706 {
+    width: 75px;
+}
+
 /* // Mobile Screen */
 @media (max-width: 599px) {
     .darkmode-icon {
