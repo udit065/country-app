@@ -4,6 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useTheme } from '../Context/ThemeContext';
 
@@ -28,11 +29,22 @@ const darkTheme = createTheme({
 const Filter = ({ countryData, setFilteredData }) => {
 
     // for dark mode 
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme(); // theme context
     const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
 
 
     const [selectText, setSelectText] = useState("");
+    const [searchText, setSearchText] = useState('');
+    const handleSearch = event => {
+        setSearchText(event.target.value);
+
+        const filteredCountries = countryData.filter(data => {
+            return data.name.common.toLowerCase().includes(searchText.toLowerCase());
+        });
+        setFilteredData(filteredCountries);
+        // console.log(filteredData)
+    }
+
 
     useEffect(() => {
         setFilteredData(countryData);
@@ -53,6 +65,11 @@ const Filter = ({ countryData, setFilteredData }) => {
     return (
         <>
             <ThemeProvider theme={selectedTheme}>
+                <div className='relative '>
+                    <Box sx={{ width: 200, position: "absolute", left: 40, top: 35 }} component="form" noValidate autoComplete="off" >
+                        <TextField id="outlined-basic" label="Search" variant="outlined" className="search-btn" value={searchText} onChange={handleSearch} />
+                    </Box >
+                </div>
                 <div className='relative dropdown-filter'>
                     <Box sx={{ width: 200, position: "absolute", right: 40, top: 35 }}>
                         <FormControl fullWidth>

@@ -7,23 +7,6 @@
     width: 75px;
 }
 
-/* 
-.dropdown-filter .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
-    background-color: #333A45;
-} */
-/* 
-@media (prefers-color-scheme: dark) {
-    .dropdown-filter .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
-        background-color: #333A45 !important;
-    }
-} */
-
-
-.search-btn .MuiInputBase-input {
-    background-color: #333A45;
-
-}
-
 /* // Mobile Screen */
 @media (max-width: 599px) {
     .darkmode-icon {

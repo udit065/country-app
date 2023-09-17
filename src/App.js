@@ -2,18 +2,26 @@ import './App.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Country from './pages/Country';
 import { ThemeProvider } from './Context/ThemeContext';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
 
   return (
     <ThemeProvider>
-      <div className='dark:bg-[#23272F]'>
-        <Navbar />
-        <Home />
-        <Footer />
-      </div>
-    </ThemeProvider>
+      <BrowserRouter>
+        <div className={`dark:bg-[#23272F]`}>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/country/:name" element={<Country />} />
+          </Routes>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ThemeProvider >
+
   );
 }
 
