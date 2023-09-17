@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+
 const Home = () => {
     const countryData = useSelector((state) => state.country.data);
     const dispatch = useDispatch();
@@ -31,17 +32,17 @@ const Home = () => {
 
     return (
         <>
-            <div>
-                <div className='relative'>
+            <div className=''>
+                <div className='relative '>
                     <Box sx={{ width: 200, position: "absolute", left: 40, top: 35 }} component="form" noValidate autoComplete="off" >
-                        <TextField id="outlined-basic" label="Search" variant="outlined" value={searchText} onChange={handleSearch} />
-                    </Box>
+                        <TextField id="outlined-basic" label="Search" variant="outlined" className="search-btn" value={searchText} onChange={handleSearch} />
+                    </Box >
                 </div>
                 <Filter countryData={countryData} setFilteredData={setFilteredData} />
             </div>
-            <div className='flex flex-wrap gap-4 justify-center my-32'>
+            <div className='flex flex-wrap gap-4 justify-center my-32 dark:text-white' >
                 {filteredData.slice(0, 24).map((elm) => (
-                    <div key={elm.name.official} className=' shadow-2xl w-[350px] h-full pb-2 rounded-2xl pb-6'>
+                    <div key={elm.name.official} className='shadow-2xl w-[350px] h-full pb-2 rounded-2xl pb-6 dark:shadow-2xl  dark:border-b-2 dark:border-slate-500'>
                         <div className='flex justify-center'>
                             <img src={elm.flags.svg} alt={elm.name.common} className='w-full h-[190px] object-cover shadow-xl rounded-xl' />
                         </div>

@@ -5,8 +5,33 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import axios from 'axios';
+import { useTheme } from '../Context/ThemeContext';
+
+// for dark mode mui
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const lightTheme = createTheme({
+    palette: {
+        mode: 'light',
+        // Define other light mode palette settings here
+    },
+});
+
+// Define your dark theme
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+        // Define other dark mode palette settings here
+    },
+});
 
 const Filter = ({ countryData, setFilteredData }) => {
+
+    // for dark mode 
+    const { theme, toggleTheme } = useTheme();
+    const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
+
+
     const [selectText, setSelectText] = useState("");
 
     useEffect(() => {
@@ -27,22 +52,24 @@ const Filter = ({ countryData, setFilteredData }) => {
 
     return (
         <>
-            <div className='relative dropdown-filter'>
-                <Box sx={{ width: 200, position: "absolute", right: 40, top: 35 }}>
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">CONTINENT</InputLabel>
-                        <Select labelId="demo-simple-select-label" id="demo-simple-select" value={selectText} label="Filter" onChange={handleChangeFilter}>
-                            <MenuItem value="">All</MenuItem>
-                            <MenuItem value="Asia">ASIA</MenuItem>
-                            <MenuItem value="Europe">EUROPE</MenuItem>
-                            <MenuItem value="Africa">AFRICA</MenuItem>
-                            <MenuItem value="Americas">AMERICAS</MenuItem>
-                            <MenuItem value="Oceania">OCEANIA</MenuItem>
-                            <MenuItem value="Antarctic">ANTARCTICA</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-            </div>
+            <ThemeProvider theme={selectedTheme}>
+                <div className='relative dropdown-filter'>
+                    <Box sx={{ width: 200, position: "absolute", right: 40, top: 35 }}>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">CONTINENT</InputLabel>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={selectText} label="Filter" onChange={handleChangeFilter}>
+                                <MenuItem value="">All</MenuItem>
+                                <MenuItem value="Asia">ASIA</MenuItem>
+                                <MenuItem value="Europe">EUROPE</MenuItem>
+                                <MenuItem value="Africa">AFRICA</MenuItem>
+                                <MenuItem value="Americas">AMERICAS</MenuItem>
+                                <MenuItem value="Oceania">OCEANIA</MenuItem>
+                                <MenuItem value="Antarctic">ANTARCTICA</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                </div>
+            </ThemeProvider>
         </>
     )
 }
