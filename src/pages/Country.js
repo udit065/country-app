@@ -18,16 +18,14 @@ const Country = () => {
         <>
             <div className="container mx-auto px-4">
                 {oneData.map((elm) => (
-
-                    <div className="flex flex-col md:flex-row">
-
+                    <div className="flex flex-col md:flex-row mb-8" key={elm.name.common}>
                         <img
-                            src={elm.flags.svg} alt={elm.name.common}
-                            className="w-40 h-40 mr-10"
+                            src={elm.flags.svg}
+                            alt={elm.name.common}
+                            className="w-1/2 md:w-40 h-auto md:h-40 mb-4 md:mb-0"
                         />
-
-                        <div className="w-full">
-                            <h1 className="text-2xl mb-4"></h1>
+                        <div className="md:ml-4 flex-grow">
+                            <h1 className="text-2xl mb-4">{elm.name.common}</h1>
                             <div className="flex flex-col md:flex-row">
                                 <div className="md:w-1/2">
                                     <p className="font-semibold mb-2">
@@ -37,25 +35,24 @@ const Country = () => {
                                         Population: <span className="font-normal">{elm.population}</span>
                                     </p>
                                     <p className="font-semibold mb-2">
-                                        Region: <span className="font-normal"> {elm.region}</span>
+                                        Region: <span className="font-normal">{elm.region}</span>
                                     </p>
                                     <p className="font-semibold mb-2">
                                         Sub Region: <span className="font-normal">{elm.subregion}</span>
                                     </p>
                                     <p className="font-semibold mb-2">
-                                        Capital: <span className="font-normal">{Array.isArray(elm.capital) ? elm.capital[0] : ''}</span>
+                                        Capital:{" "}
+                                        <span className="font-normal">
+                                            {Array.isArray(elm.capital) ? elm.capital[0] : ''}
+                                        </span>
                                     </p>
                                     <p className="font-semibold mb-2">
-                                        Area(km²): <span className="font-normal">{elm.area}</span>
+                                        Area(km²): <span className="font-normal">{elm.area} km²</span>
                                     </p>
                                 </div>
-
                                 <div className="md:w-1/2">
                                     <p className="font-semibold mb-2">
-                                        Top Level Domain: <span className="font-normal">{elm.subregion}</span>
-                                    </p>
-                                    <p className="font-semibold mb-2">
-                                        {/* Currencies: <span className="font-normal">{elm.currencies}</span> */}
+                                        Top Level Domain: <span className="font-normal">{elm.tld}</span>
                                     </p>
                                     <p className="font-semibold mb-2">
                                         Languages:{" "}
@@ -86,7 +83,8 @@ const Country = () => {
                         </div>
                     </div>
                 ))}
-            </div >
+            </div>
+
         </>
     );
 }

@@ -35,6 +35,7 @@ const Filter = ({ countryData, setFilteredData }) => {
 
     const [selectText, setSelectText] = useState("");
     const [searchText, setSearchText] = useState('');
+    
     const handleSearch = event => {
         setSearchText(event.target.value);
 
