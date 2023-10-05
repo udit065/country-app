@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Country from './pages/Country';
 import { ThemeProvider } from './Context/ThemeContext';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Test from './components/Test';
 
 function App() {
 
@@ -16,7 +15,6 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/test" element={<Test />} />
             <Route path="/country/:name" element={<Country />} />
           </Routes>
           <Footer />

@@ -16,7 +16,7 @@ const Country = () => {
 
     return (
         <>
-            <div className="container mx-auto px-4" style={{ padding: '50px' }}>
+            <div className="container mx-auto px-4 h-[605px]" style={{ padding: '50px' }}>
                 {oneData.map((elm) => (
                     <div className="flex flex-col md:flex-row mb-8" key={elm.name.common} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                         <img

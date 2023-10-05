@@ -71,7 +71,7 @@ const Filter = ({ countryData, setFilteredData, setPage }) => {
     return (
         <>
             <ThemeProvider theme={selectedTheme}>
-                <div className='relative '>
+                <div className='relative search-btn-main-div'>
                     <Box sx={{ width: 200, position: "absolute", left: 40, top: 35 }} component="form" noValidate autoComplete="off" >
                         <TextField id="outlined-basic" label="Search" variant="outlined" className="search-btn" value={searchText} onChange={handleSearch} />
                     </Box >

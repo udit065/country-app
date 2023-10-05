@@ -6,7 +6,14 @@
 .dropdown-filter .css-14lo706 {
     width: 75px;
 }
-/* .pagination-btn  */
+
+
+/* //Tablet Screen */
+@media (min-width: 600px) and (max-width:1023px) {
+    .darkmode-icon {
+        font-size: 1.2rem !important;
+    }
+}
 
 /* // Mobile Screen */
 @media (max-width: 599px) {
@@ -14,11 +21,37 @@
         margin: 2px;
         font-size: 1rem !important;
     }
-}
 
-/* //Tablet Screen */
-@media (min-width: 600px) and (max-width:1023px) {
-    .darkmode-icon {
-        font-size: 1.2rem !important;
+    .dropdown-filter .css-7q5g {
+        /* background-color: #c09595; */
+        width: 100px;
     }
+
+    .dropdown-filter .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+        height: 40px;
+
+    }
+
+    .dropdown-filter .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+        font-size: 10px !important;
+    }
+
+    .search-btn-main-div .css-1v5su5n {
+        /* background-color: #ecd2d2; */
+        width: 80px;
+    }
+
+    .search-btn .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+        height: 40px;
+    }
+
+    .search-btn .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+        font-size: 15px;
+    }
+
+    /* //------------- MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input*/
+
+
+
+
 }

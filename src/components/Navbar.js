@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className='w-full laptop:h-14 tablet:h-12 mobile:h-8 flex justify-around items-center shadow-xl dark:bg-[#374151] dark:shadow-2xl'>
             <Link to="/">
-                <div className='absolute left-[90px] font-bold laptop:text-xl tablet:text-lg mobile:text-xs tablet:left-[50px] mobile:left-[7px] dark:text-white'>
+                <div className='absolute left-[90px] top-4 font-bold laptop:text-xl tablet:text-lg mobile:text-xs tablet:left-[50px] mobile:left-[18px] mobile:top-2 dark:text-white'>
                     World Explorer
                 </div>
             </Link>

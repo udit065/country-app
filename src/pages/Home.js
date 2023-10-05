@@ -42,7 +42,7 @@ const Home = () => {
             </div>
             <div className='flex flex-wrap gap-4 justify-center my-32 dark:text-white' >
                 {slicedData.map((elm) => (
-                    <div key={elm.name.official} className='shadow-2xl w-[350px] h-full pb-2 rounded-2xl pb-6 dark:shadow-2xl  dark:border-b-2 dark:border-slate-500'>
+                    <div key={elm.name.official} className='shadow-2xl w-[350px] mobile:w-[240px] h-full pb-2 rounded-2xl pb-6 dark:shadow-2xl  dark:border-b-2 dark:border-slate-500'>
                         <Link to={`/country/${elm.name.official}`}>
                             <div className='flex justify-center'>
                                 <img src={elm.flags.svg} alt={elm.name.common} className='w-full h-[190px] object-cover shadow-xl rounded-xl' />
