@@ -26,7 +26,7 @@ const darkTheme = createTheme({
     },
 });
 
-const Filter = ({ countryData, setFilteredData }) => {
+const Filter = ({ countryData, setFilteredData, setPage }) => {
 
     // for dark mode 
     const { theme, toggleTheme } = useTheme(); // theme context
@@ -35,13 +35,14 @@ const Filter = ({ countryData, setFilteredData }) => {
 
     const [selectText, setSelectText] = useState("");
     const [searchText, setSearchText] = useState('');
-    
+
     const handleSearch = event => {
         setSearchText(event.target.value);
 
         const filteredCountries = countryData.filter(data => {
             return data.name.common.toLowerCase().includes(searchText.toLowerCase());
         });
+        setPage(1);
         setFilteredData(filteredCountries);
         // console.log(filteredData)
     }
@@ -55,11 +56,15 @@ const Filter = ({ countryData, setFilteredData }) => {
         setSelectText(event.target.value);
         if (event.target.value === "") {
             // If no continent is selected, show all countries
+            setPage(1);
             setFilteredData(countryData);
         } else {
             axios.get(`https://restcountries.com/v3.1/region/${event.target.value}`)
                 .then(response => response.data)
-                .then(data => setFilteredData(data));
+                .then((data) => {
+                    setPage(1);
+                    setFilteredData(data)
+                });
         }
     }
 

@@ -12,7 +12,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const [filteredData, setFilteredData] = useState([]);
 
-    // Pagination logic -----
+    // Pagination logic ---------
     const [page, setPage] = useState(1);
     const itemsPerPage = 24;
 
@@ -38,7 +38,7 @@ const Home = () => {
     return (
         <>
             <div>
-                <Filter countryData={countryData} setFilteredData={setFilteredData} />
+                <Filter countryData={countryData} setFilteredData={setFilteredData} setPage={setPage} />
             </div>
             <div className='flex flex-wrap gap-4 justify-center my-32 dark:text-white' >
                 {slicedData.map((elm) => (

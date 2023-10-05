@@ -16,16 +16,16 @@ const Country = () => {
 
     return (
         <>
-            <div className="container mx-auto px-4" style={{padding:'50px'}}>
+            <div className="container mx-auto px-4" style={{ padding: '50px' }}>
                 {oneData.map((elm) => (
-                    <div className="flex flex-col md:flex-row mb-8" key={elm.name.common} style={{display:'flex', flexDirection:'row', flexWrap:'wrap', justifyContent:'space-evenly'}}>
+                    <div className="flex flex-col md:flex-row mb-8" key={elm.name.common} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                         <img
                             src={elm.flags.svg}
                             alt={elm.name.common}
                             className="w-1/2 md:w-40 h-auto md:h-40 mb-4 md:mb-0"
-                            style={{minWidth:'200px'}}
+                            style={{ minWidth: '200px' }}
                         />
-                        <div className="md:ml-4" style={{width:"200px"}}>
+                        <div className="md:ml-4" style={{ width: "200px" }}>
                             <h1 className="text-2xl mb-4"><b>{elm.name.common}</b></h1>
                             <div className="flex flex-col md:flex-row">
                                 <div className="md:w-1/2">
