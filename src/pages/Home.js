@@ -34,7 +34,7 @@ const Home = () => {
         dispatch(fetchData());
     }, [dispatch]);
 
-
+    
     return (
         <>
             <div>
