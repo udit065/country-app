@@ -16,16 +16,16 @@ const Country = () => {
 
     return (
         <>
-            <div className="w-screen h-[455px] dark:text-white mobile:h-full mobile:text-center tablet:h-full tablet:text-center">
+            <div className="w-screen h-[459px] dark:text-white mobile:h-[100vh] mobile:text-center tablet:h-full tablet:text-center">
                 {oneData.map((elm) => (
                     <>
-                        <div key={elm.name.common} className='flex justify-evenly items-center mt-36 mobile:flex-col mobile:mt-10 tablet:flex-col tablet:mt-20'>
+                        <div key={elm.name.common} className='flex justify-evenly items-center mt-36 mobile:flex-col mobile:mt-20 tablet:flex-col tablet:mt-20'>
                             {/* Image Div */}
                             <div>
                                 <img
                                     src={elm.flags.svg}
                                     alt={elm.name.common}
-                                    className='w-96 rounded-xl mobile:w-52 tablet:w-72'
+                                    className='w-96 rounded-xl mobile:w-64 tablet:w-72'
                                 />
                             </div>
                             {/* Country Detail Div */}

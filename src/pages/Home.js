@@ -2,12 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../redux/slice/CountrySlice';
 import Filter from '../components/Filter';
-import PaginationComponent from '../components/Pagination';
 import { Link } from "react-router-dom";
 import { Pagination } from '@mui/material';
+import { useTheme } from '../Context/ThemeContext';
+// for dark mode mui
+import { ThemeProvider } from '@mui/material/styles';
+import { lightTheme, darkTheme } from '../Context/MuiTheme';
+import Spinner from '../components/Spinner';
 
 
 const Home = () => {
+
+    // for dark mode 
+    const { theme, toggleTheme } = useTheme(); // theme context
+    const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
+
+
     const countryData = useSelector((state) => state.country.data);
     const dispatch = useDispatch();
     const [filteredData, setFilteredData] = useState([]);
@@ -34,15 +44,16 @@ const Home = () => {
         dispatch(fetchData());
     }, [dispatch]);
 
-    
+
     return (
         <>
+
             <div>
                 <Filter countryData={countryData} setFilteredData={setFilteredData} setPage={setPage} />
             </div>
-            <div className='flex flex-wrap gap-4 justify-center my-32 dark:text-white' >
+            <div className='flex flex-wrap gap-4 justify-center mt-32 mb-20 dark:text-white' >
                 {slicedData.map((elm) => (
-                    <div key={elm.name.official} className='shadow-2xl w-[350px] mobile:w-[240px] h-full pb-2 rounded-2xl pb-6 dark:shadow-2xl  dark:border-b-2 dark:border-slate-500'>
+                    <div key={elm.name.official} className='shadow-2xl w-[350px] mobile:w-[240px] h-full rounded-2xl pb-6 dark:shadow-2xl  dark:border-b-2 dark:border-slate-500'>
                         <Link to={`/country/${elm.name.official}`}>
                             <div className='flex justify-center'>
                                 <img src={elm.flags.svg} alt={elm.name.common} className='w-full h-[190px] object-cover shadow-xl rounded-xl' />
@@ -50,21 +61,22 @@ const Home = () => {
                         </Link>
                         <div className='font-bold uppercase mt-2 text-lg ml-4'>{elm.name.common}</div>
                         <div className='font-medium uppercase ml-4'>Capital: {Array.isArray(elm.capital) ? elm.capital[0] : ''}</div>
-                        <div className='font-medium uppercase ml-4'>Population: {elm.population}</div>
+                        <div className='font-medium uppercase ml-4'>Population: {elm.population.toLocaleString()}</div>
                         <div className='font-medium uppercase ml-4'>Continent: {elm.region}</div>
                     </div>
                 ))}
-                {/* <PaginationComponent /> */}
+            </div>'
+            <ThemeProvider theme={selectedTheme}>
                 <Pagination
                     count={totalPages}
                     page={page}
                     onChange={handlePageChange}
-                    // variant="outlined"
-                    // shape="rounded"
+                    color='primary'
                     showFirstButton showLastButton
-                    className='pagination-btn dark:bg-[#b9bec8]'
+                    className='flex justify-center mb-20'
                 />
-            </div>
+            </ThemeProvider>
+            {/* <Spinner /> */}
         </>
     );
 }

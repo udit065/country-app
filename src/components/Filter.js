@@ -7,24 +7,9 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useTheme } from '../Context/ThemeContext';
-
 // for dark mode mui
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-const lightTheme = createTheme({
-    palette: {
-        mode: 'light',
-        // Define other light mode palette settings here
-    },
-});
-
-// Define your dark theme
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-        // Define other dark mode palette settings here
-    },
-});
+import { ThemeProvider } from '@mui/material/styles';
+import { lightTheme, darkTheme } from '../Context/MuiTheme';
 
 const Filter = ({ countryData, setFilteredData, setPage }) => {
 
