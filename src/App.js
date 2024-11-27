@@ -6,23 +6,24 @@ import Country from './pages/Country';
 import { ThemeProvider } from './Context/ThemeContext';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
-
+const App = () => {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <div className={`dark:bg-[#23272F]`}>
+        <div className="flex flex-col min-h-screen dark:bg-[#23272F]">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/country/:name" element={<Country />} />
-          </Routes>
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/country/:name" element={<Country />} />
+            </Routes>
+          </div>
           <Footer />
         </div>
       </BrowserRouter>
-    </ThemeProvider >
-
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
+

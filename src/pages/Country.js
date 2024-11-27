@@ -16,7 +16,7 @@ const Country = () => {
 
     return (
         <>
-            <div className="w-screen h-[459px] dark:text-white mobile:h-[100vh] mobile:text-center tablet:h-full tablet:text-center">
+            <div className="dark:text-white mobile:h-[100vh] mobile:text-center tablet:h-full tablet:text-center">
                 {oneData.map((elm) => (
                     <>
                         <div key={elm.name.common} className='flex justify-evenly items-center mt-36 mobile:flex-col mobile:mt-20 tablet:flex-col tablet:mt-20'>
