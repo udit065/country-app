@@ -14,7 +14,7 @@ import { lightTheme, darkTheme } from '../Context/MuiTheme';
 const Filter = ({ countryData, setFilteredData, setPage }) => {
 
     // for dark mode 
-    const { theme, toggleTheme } = useTheme(); // theme context
+    const { theme } = useTheme(); // theme context
     const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
 
 

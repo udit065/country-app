@@ -8,13 +8,13 @@ import { useTheme } from '../Context/ThemeContext';
 // for dark mode mui
 import { ThemeProvider } from '@mui/material/styles';
 import { lightTheme, darkTheme } from '../Context/MuiTheme';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
 
 
 const Home = () => {
 
     // for dark mode 
-    const { theme, toggleTheme } = useTheme(); // theme context
+    const { theme } = useTheme(); // theme context
     const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
 
 

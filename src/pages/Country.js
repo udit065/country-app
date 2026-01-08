@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOneCountryData } from '../redux/slice/OneCountrySlice';
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const Country = () => {
@@ -12,7 +12,7 @@ const Country = () => {
 
     useEffect(() => {
         dispatch(fetchOneCountryData(name));
-    }, [dispatch]);
+    }, [dispatch,name]);
 
     return (
         <>

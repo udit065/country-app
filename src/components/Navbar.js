@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import '../App.css';
 import { useTheme } from '../Context/ThemeContext';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { toggleTheme } = useTheme();
 
     return (
         <nav className='w-full laptop:h-14 tablet:h-12 mobile:h-12 flex justify-around items-center shadow-xl dark:bg-[#374151] dark:shadow-2xl'>
