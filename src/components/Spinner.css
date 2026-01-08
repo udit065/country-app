@@ -1,7 +1,26 @@
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader-wrapper {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.dark .loader-wrapper {
+    background: rgba(0, 0, 0, 0.4);
+}
+
 .loader {
     width: 48px;
     height: 48px;
-    margin: auto;
     position: relative;
 }
 

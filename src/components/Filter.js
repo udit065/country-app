@@ -1,85 +1,94 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-import axios from 'axios';
 import { useTheme } from '../Context/ThemeContext';
-// for dark mode mui
 import { ThemeProvider } from '@mui/material/styles';
 import { lightTheme, darkTheme } from '../Context/MuiTheme';
 
-const Filter = ({ countryData, setFilteredData, setPage }) => {
+const Filter = ({ countryData, setFilteredData }) => {
 
-    // for dark mode 
-    const { theme } = useTheme(); // theme context
+    // dark mode
+    const { theme } = useTheme();
     const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
 
-
     const [selectText, setSelectText] = useState("");
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState("");
 
-    const handleSearch = event => {
-        setSearchText(event.target.value);
+    // Search filter
+    const handleSearch = (event) => {
+        const value = event.target.value;
+        setSearchText(value);
 
-        const filteredCountries = countryData.filter(data => {
-            return data.name.common.toLowerCase().includes(searchText.toLowerCase());
-        });
-        setPage(1);
+        const filteredCountries = countryData.filter((data) =>
+            data.name.common.toLowerCase().includes(value.toLowerCase())
+        );
+
         setFilteredData(filteredCountries);
-        // console.log(filteredData)
-    }
+    };
 
+    // Continent filter 
+    const handleChangeFilter = (event) => {
+        const value = event.target.value;
+        setSelectText(value);
 
+        if (value === "") {
+            setFilteredData(countryData);
+        } else {
+            const filteredCountries = countryData.filter(
+                (data) => data.region === value
+            );
+            setFilteredData(filteredCountries);
+        }
+    };
+
+    // Reset when data loads
     useEffect(() => {
         setFilteredData(countryData);
     }, [countryData, setFilteredData]);
 
-    const handleChangeFilter = event => {
-        setSelectText(event.target.value);
-        if (event.target.value === "") {
-            // If no continent is selected, show all countries
-            setPage(1);
-            setFilteredData(countryData);
-        } else {
-            axios.get(`https://restcountries.com/v3.1/region/${event.target.value}`)
-                .then(response => response.data)
-                .then((data) => {
-                    setPage(1);
-                    setFilteredData(data)
-                });
-        }
-    }
-
     return (
-        <>
-            <ThemeProvider theme={selectedTheme}>
-                <div className='relative search-btn-main-div'>
-                    <Box sx={{ width: 200, position: "absolute", left: 40, top: 35 }} component="form" noValidate autoComplete="off" >
-                        <TextField id="outlined-basic" label="Search" variant="outlined" className="search-btn" value={searchText} onChange={handleSearch} />
-                    </Box >
-                </div>
-                <div className='relative dropdown-filter'>
-                    <Box sx={{ width: 200, position: "absolute", right: 40, top: 35 }}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">CONTINENT</InputLabel>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={selectText} label="Filter" onChange={handleChangeFilter}>
-                                <MenuItem value="">All</MenuItem>
-                                <MenuItem value="Asia">ASIA</MenuItem>
-                                <MenuItem value="Europe">EUROPE</MenuItem>
-                                <MenuItem value="Africa">AFRICA</MenuItem>
-                                <MenuItem value="Americas">AMERICAS</MenuItem>
-                                <MenuItem value="Oceania">OCEANIA</MenuItem>
-                                <MenuItem value="Antarctic">ANTARCTICA</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
-                </div>
-            </ThemeProvider>
-        </>
-    )
-}
+        <ThemeProvider theme={selectedTheme}>
+            <div className="relative search-btn-main-div">
+                <Box
+                    sx={{ width: 200, position: "absolute", left: 40, top: 35 }}
+                >
+                    <TextField
+                        label="Search"
+                        variant="outlined"
+                        value={searchText}
+                        onChange={handleSearch}
+                    />
+                </Box>
+            </div>
+
+            <div className="relative dropdown-filter">
+                <Box
+                    sx={{ width: 200, position: "absolute", right: 40, top: 35 }}
+                >
+                    <FormControl fullWidth>
+                        <InputLabel>CONTINENT</InputLabel>
+                        <Select
+                            value={selectText}
+                            label="CONTINENT"
+                            onChange={handleChangeFilter}
+                        >
+                            <MenuItem value="">All</MenuItem>
+                            <MenuItem value="Asia">ASIA</MenuItem>
+                            <MenuItem value="Europe">EUROPE</MenuItem>
+                            <MenuItem value="Africa">AFRICA</MenuItem>
+                            <MenuItem value="Americas">AMERICAS</MenuItem>
+                            <MenuItem value="Oceania">OCEANIA</MenuItem>
+                            <MenuItem value="Antarctic">ANTARCTICA</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+            </div>
+        </ThemeProvider>
+    );
+};
 
 export default Filter;

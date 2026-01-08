@@ -16,7 +16,7 @@ export const fetchData = createAsyncThunk(
                 {
                     params: {
                         fields:
-                            "name,capital,region,subregion,population,flags,cca2,cca3,currencies",
+                            "name,capital,region,subregion,population,flags,cca2,cca3,currencies,area",
                     },
                 }
             );
