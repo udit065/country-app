@@ -52,40 +52,56 @@ const Filter = ({ countryData, setFilteredData }) => {
 
     return (
         <ThemeProvider theme={selectedTheme}>
-            <div className="relative search-btn-main-div">
-                <Box
-                    sx={{ width: 200, position: "absolute", left: 40, top: 35 }}
-                >
-                    <TextField
-                        label="Search"
-                        variant="outlined"
-                        value={searchText}
-                        onChange={handleSearch}
-                    />
-                </Box>
-            </div>
+            <div className="relative">
 
-            <div className="relative dropdown-filter">
-                <Box
-                    sx={{ width: 200, position: "absolute", right: 40, top: 35 }}
-                >
-                    <FormControl fullWidth>
-                        <InputLabel>CONTINENT</InputLabel>
-                        <Select
-                            value={selectText}
-                            label="CONTINENT"
-                            onChange={handleChangeFilter}
-                        >
-                            <MenuItem value="">All</MenuItem>
-                            <MenuItem value="Asia">ASIA</MenuItem>
-                            <MenuItem value="Europe">EUROPE</MenuItem>
-                            <MenuItem value="Africa">AFRICA</MenuItem>
-                            <MenuItem value="Americas">AMERICAS</MenuItem>
-                            <MenuItem value="Oceania">OCEANIA</MenuItem>
-                            <MenuItem value="Antarctic">ANTARCTICA</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
+                {/* Mobile wrapper to center search + filter */}
+                <div className="mobile:flex mobile:flex-col mobile:items-center mobile:gap-4">
+                    {/* Search Box */}
+                    <Box
+                        sx={{
+                            width: { xs: "90%", sm: 200 }, // full width on mobile, fixed on desktop
+                            position: { xs: "static", sm: "absolute" },
+                            left: { xs: "auto", sm: 40 },
+                            top: { xs: "auto", sm: 35 },
+                        }}
+                    >
+                        <TextField
+                            label="Search"
+                            variant="outlined"
+                            value={searchText}
+                            onChange={handleSearch}
+                            fullWidth
+                        />
+                    </Box>
+
+                    {/* Filter Dropdown */}
+                    <Box
+                        sx={{
+                            width: { xs: "90%", sm: 200 },
+                            position: { xs: "static", sm: "absolute" },
+                            right: { xs: "auto", sm: 40 },
+                            top: { xs: "auto", sm: 35 },
+                        }}
+                    >
+                        <FormControl fullWidth>
+                            <InputLabel>CONTINENT</InputLabel>
+                            <Select
+                                value={selectText}
+                                label="CONTINENT"
+                                onChange={handleChangeFilter}
+                            >
+                                <MenuItem value="">All</MenuItem>
+                                <MenuItem value="Asia">ASIA</MenuItem>
+                                <MenuItem value="Europe">EUROPE</MenuItem>
+                                <MenuItem value="Africa">AFRICA</MenuItem>
+                                <MenuItem value="Americas">AMERICAS</MenuItem>
+                                <MenuItem value="Oceania">OCEANIA</MenuItem>
+                                <MenuItem value="Antarctic">ANTARCTICA</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                </div>
+
             </div>
         </ThemeProvider>
     );

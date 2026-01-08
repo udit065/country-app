@@ -32,7 +32,7 @@ const Home = () => {
             <Filter countryData={countryData} setFilteredData={setFilteredData} />
 
             {/* Countries Flex */}
-            <div className='flex flex-wrap justify-center gap-4 mt-32 mb-20 dark:text-white'>
+            <div className='flex flex-wrap justify-center gap-4 mt-32 mobile:mt-12 mb-20 dark:text-white'>
                 {filteredData.map((elm) => (
                     <Link
                         key={elm.name.official}
